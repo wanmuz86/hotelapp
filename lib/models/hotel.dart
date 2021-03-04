@@ -10,13 +10,18 @@ class Hotel {
 
   factory Hotel.fromJson(Map<String,dynamic> json){
     print(json);
+    var jsonToProcess = json;
+    // For add , since it comes in a sheet1
+    if (json["sheet1"]!=null){
+      jsonToProcess = json["sheet1"];
+    }
     return Hotel(
-      id:json["sheet1"]["id"],
-      name:json["sheet1"]["name"],
-      price:json["sheet1"]["price"],
-      rating:json["sheet1"]["rating"],
-      imageUrl:json["sheet1"]["imageurl"],
-      location: json["sheet1"]["location"]
+      id:jsonToProcess["id"],
+      name:jsonToProcess["name"],
+      price:jsonToProcess["price"],
+      rating:jsonToProcess["rating"],
+      imageUrl:jsonToProcess["imageurl"],
+      location: jsonToProcess["location"]
     );
   }
 }
